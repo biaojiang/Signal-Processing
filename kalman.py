@@ -25,7 +25,7 @@ class kalman:
         x_est = self.A.dot(self.x_curr) + self.B.dot(control_vec)
         P_est = self.A.dot(self.P_curr).dot(self.A.T) + self.Q
 
-        # innovatio
+        # innovation
         innovation = obs_vec - self.H.dot(x_est)
         innovation_cov = self.H.dot(P_est).dot(self.H.T) + self.R
         kalman_gain = P_est.dot(self.H.T).dot(np.linalg.inv(innovation_cov))
